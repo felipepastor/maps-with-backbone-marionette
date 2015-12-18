@@ -1,0 +1,11 @@
+{
+  "name": "AvenueCode",
+  "version": "1.0.0",
+  "description": "AvenueCode Test",
+  "dependencies": {
+    "gulp": "^3.5.6",
+    "gulp-minify-css": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.0.4"
+  }
+}
