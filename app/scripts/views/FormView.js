@@ -94,6 +94,5 @@ define(["app",
             }
         });
     });
-
     return App.Form.View
 });
