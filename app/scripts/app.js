@@ -1,18 +1,37 @@
-define(['marionette'], function (Marionette) {
+define(['marionette', 'backbone'], function (Marionette, Backbone) {
     var App = new Marionette.Application();
 
     App.addRegions({
-        header: "#header-region",
-        footer: "#footer-region",
+        search: "#search-region",
+        lastest: "#lastest-search-region",
         body: "#body-region"
     });
 
-    App.on("before:start", function () {
-        console.log('Está para comecar!!!');
+    var RouterController = {
+        mainAction: function () {
+            require(["controllers/mainCtrl"], function (MainController) {
+                MainController.mainActionView();
+            });
+        }
+    };
+
+    var appRouter = Marionette.AppRouter.extend({
+        appRoutes: {
+            "": 'mainAction'
+        }
+    });
+
+    App.addInitializer(function (options) {
+        // initialize the router
+        new appRouter({
+            controller: RouterController
+        });
     });
 
     App.on("start", function () {
-        console.log('FUNCIONOU!!!')
+        if (Backbone.history) {
+            Backbone.history.start();
+        }
     });
 
     return App;

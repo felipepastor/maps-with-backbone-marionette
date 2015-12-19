@@ -11,23 +11,26 @@
     <link rel="stylesheet" href="assets/css/min/styles.min.css"/>
 </head>
 <body>
-<div class="container">
-    <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
+<div class="container-fluid clear-height">
+    <div class="row clear-height">
+        <div class="col-md-3 sidebar well">
+            <!-- Search Region -->
+            <div id="search-region"></div>
+            <hr/>
+            <!-- Lastest Search Region -->
+            <div id="lastest-search-region"></div>
+        </div>
+        <div class="col-md-9 clear-height">
+            <div id="body-region" class="clear-height">
+                <div class="starter-template">
+                    <h1>Welcome to AvenueCode Test!</h1>
 
-        <p class="lead">
-            Use this document as a way to quickly start any new project.<br> All you get is this text and a
-            mostly barebones HTML document.
-        </p>
-
-        <div class="well">
-            <form>
-                <div class="form-group">
-                    <label for="website_url"></label>
-                    <input type="text" class="form-control" id="website_url" placeholder="Website Url (Ex. www.google.com, g1.com)">
+                    <p class="lead">
+                        Use this document as a way to quickly start any new project.<br> All you get is this text and a
+                        mostly barebones HTML document.
+                    </p>
                 </div>
-                <button type="submit" class="btn btn-raised btn-info">Find!</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
@@ -40,7 +43,9 @@
 <!--<div id="footer-region">-->
 <!--FOOTER-->
 <!--</div>-->
-
+<!--<script async defer-->
+        <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByKd7nRWzHBc76mGYTup-zzX6pWQlpwH8">-->
+<!--</script>-->
 <script data-main="scripts/require_main.js" src="vendor/requirejs/require.js"></script>
 </body>
 </html>

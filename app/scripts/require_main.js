@@ -7,11 +7,18 @@ require.config({
         'backbone.wreqr': '../vendor/backbone.wreqr/lib/backbone.wreqr',
         'marionette': '../vendor/backbone.marionette/lib/core/backbone.marionette',
         'bootstrap': '../vendor/bootstrap/dist/js/bootstrap',
-        'material': '../vendor/bootstrap-material-design/dist/js/material'
+        'material': '../vendor/bootstrap-material-design/dist/js/material',
+        text: "../vendor/require.text/require.text",
+        tpl: "../vendor/underscore_tpl/underscore.tpl",
+        async: '../vendor/requirejs-plugins/src/async',
+        moment: '../vendor/moment/min/moment.min'
     },
     shim: {
+        'bootstrap': {
+            deps: ['jquery']
+        },
         'material': {
-            'deps': ['bootstrap', 'jquery']
+            'deps': ['bootstrap']
         },
         underscore: {
             exports: '_'
@@ -27,7 +34,9 @@ require.config({
     }
 });
 
-require(['app', 'material'], function (App) {
+require(['app', 'material', 'controllers/mainCtrl', 'moment'], function (App, material, mainCtrl, moment) {
+
+
     //initialize material design
     $.material.init();
 

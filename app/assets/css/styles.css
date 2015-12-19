@@ -1,3 +1,20 @@
+html, body, .clear-height {
+  height: 100%; }
+
+.sidebar {
+  box-shadow: 0 -6px 5px;
+  height: 100%;
+  margin-bottom: 0 !important; }
+  .sidebar h3 {
+    text-align: center; }
+
+.nopadding {
+  padding: 0 !important; }
+
 .starter-template {
-  padding: 40px 15px;
+  padding: 40px 15px 0 15px;
   text-align: center; }
+
+#map-container {
+  height: 100%;
+  width: 100%; }
