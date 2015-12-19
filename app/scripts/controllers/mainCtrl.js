@@ -1,7 +1,7 @@
 define(["app",
-    "views/listLastestView",
-    "views/formView",
-    "collections/mainCollections"], function (App, ListView, FormView, Collection) {
+    "views/ListLastestView",
+    "views/FormView",
+    "collections/MainCollections"], function (App, ListView, FormView, Collection) {
     App.module("Main", function (Main, App) {
         Main.Controller = {
             mainActionView: function () {

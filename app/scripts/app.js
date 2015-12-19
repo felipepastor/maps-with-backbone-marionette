@@ -9,7 +9,7 @@ define(['marionette', 'backbone'], function (Marionette, Backbone) {
 
     var RouterController = {
         mainAction: function () {
-            require(["controllers/mainCtrl"], function (MainController) {
+            require(["controllers/MainCtrl"], function (MainController) {
                 MainController.mainActionView();
             });
         }

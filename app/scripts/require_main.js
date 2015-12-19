@@ -34,9 +34,7 @@ require.config({
     }
 });
 
-require(['app', 'material', 'controllers/mainCtrl', 'moment'], function (App, material, mainCtrl, moment) {
-
-
+require(['app', 'material', 'controllers/MainCtrl', 'moment'], function (App, material, mainCtrl, moment) {
     //initialize material design
     $.material.init();
 

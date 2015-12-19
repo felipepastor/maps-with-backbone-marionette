@@ -1,11 +1,12 @@
 define(["app",
     "tpl!../../templates/form/form.html",
-    'utils/functions',
-    'views/mapView',
-    "views/listLastestView",
-    "collections/mainCollections",
+    'utils/Functions',
+    'views/MapView',
+    "views/ListLastestView",
+    "collections/MainCollections",
+    "notFoundView",
     'moment'
-], function (App, formTpl, Util, MapView, ListView, Collection, moment) {
+], function (App, formTpl, Util, MapView, ListView, Collection, NotFoundView, moment) {
     App.module("Form.View", function (View, App, Backbone, Marionette, $) {
         View.FormItem = Marionette.ItemView.extend({
             template: formTpl,
@@ -38,41 +39,53 @@ define(["app",
                     return false;
                 }
 
-                var obj = {
-                    st_name: link_val,
-                    dt_search: moment().format('DD/MM/YYYY, h:mm:ss a')
-                };
-
-                if (localStorage.getItem('lastest_search') == null) {
-                    localStorage.setItem('lastest_search', JSON.stringify([obj]));
-                } else {
-                    var arrayPush = JSON.parse(localStorage.getItem('lastest_search'));
-                    arrayPush.push(obj);
-                    localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
-                }
-
                 $.ajax({
                     url: 'http://ip-api.com/json/' + link_val,
                     type: 'GET',
                     dataType: 'json',
                     success: function (response) {
-                        var newMap = new MapView.MapItem();
 
-                        newMap.onShow = function () {
-                            var mapOptions = {
-                                zoom: 8,
-                                center: new google.maps.LatLng(response.lat, response.lon),
-                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                        if(response.status == 'success') {
+                            /*
+                             * Saving some data in localStorage
+                             * */
+                            var obj = {
+                                st_name: link_val,
+                                dt_search: moment().format('DD/MM/YYYY, H:MM:SS'),
+                                lat: response.lat,
+                                lng: response.lon
                             };
 
-                            new google.maps.Map(newMap.ui.mapContainer[0], mapOptions);
-                        };
+                            /*
+                            * Verifying if the obj in localstorage is already created
+                            * */
+                            if (localStorage.getItem('lastest_search') == null) {
+                                // If not, we'll create a new one
+                                localStorage.setItem('lastest_search', JSON.stringify([obj]));
+                            } else {
+                                //If Yes, we'll populate with more information
+                                var arrayPush = JSON.parse(localStorage.getItem('lastest_search'));
+                                arrayPush.push(obj);
+                                localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
+                            }
 
-                        App.body.show(newMap);
+                            //New instance of MapView, for render after a successfull response
+                            var newMap = new MapView.MapItem();
+                            newMap.onShow = function () {
+                                this.loadMap(response);
+                            };
 
-                        var lastestSearch = new ListView.Composite();
-                        lastestSearch.collection = Collection.collectionList();
-                        App.lastest.show(lastestSearch);
+                            //Show the View in the region
+                            App.body.show(newMap);
+
+                            //New instance of ListView to update the collection and view
+                            var lastestSearch = new ListView.Composite();
+                            lastestSearch.collection = Collection.collectionList();
+                            App.lastest.show(lastestSearch);
+                        } else {
+                            //Show the View of NotFound in the body region
+                            App.body.show(new NotFoundView.NotFoundItem());
+                        }
                     },
                     error: function (response) {
                         console.log(response);

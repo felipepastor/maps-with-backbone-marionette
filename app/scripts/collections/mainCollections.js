@@ -1,4 +1,4 @@
-define(["app", "models/mainModels"], function (App) {
+define(["app", "models/MainModels"], function (App) {
     App.module("Collections", function (Collections, App, Backbone) {
         Collections.ObjectsCollections = {
             collectionList: function () {
