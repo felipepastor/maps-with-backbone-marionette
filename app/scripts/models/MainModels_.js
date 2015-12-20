@@ -5,14 +5,7 @@ define(["app"], function (App) {
                 return Backbone.Model.extend({
                     defaults: {
                         st_name: '',
-                        dt_search: ''
-                    }
-                });
-            },
-            searchModel: function() {
-                return Backbone.Model.extend({
-                    defaults: {
-                        st_name: '',
+                        org: '',
                         dt_search: ''
                     }
                 });

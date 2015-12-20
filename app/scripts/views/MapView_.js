@@ -2,7 +2,7 @@ define(["app",
     "tpl!../../templates/maps/maps.html",
     'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyByKd7nRWzHBc76mGYTup-zzX6pWQlpwH8'
 ], function (App, mapsTpl) {
-    App.module("Map.View", function (View, App, Backbone, Marionette, $, _) {
+    App.module("Map.View", function (View, App, Backbone, Marionette) {
         View.MapItem = Marionette.ItemView.extend({
             template: mapsTpl,
             tagName: 'div',
@@ -10,7 +10,7 @@ define(["app",
             ui: {
                 mapContainer: '#map-container'
             },
-            loadMap: function (response, isItMe, fromReset) {
+            loadMap: function (response, isItMe) {
                 var myLatLng = {
                     lat: response.lat,
                     lng: response.lon
@@ -47,7 +47,7 @@ define(["app",
                 var self = this;
                 var locations = JSON.parse(localStorage.getItem('lastest_search'));
 
-                locations.forEach(function (obj, index) {
+                locations.forEach(function (obj) {
                     var marker = new google.maps.Marker({
                         position: {
                             lat: obj.lat,
