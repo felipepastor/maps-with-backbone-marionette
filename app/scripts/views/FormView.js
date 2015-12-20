@@ -4,7 +4,7 @@ define(["app",
     'views/MapView',
     "views/ListLastestView",
     "collections/MainCollections",
-    "notFoundView",
+    "views/NotFoundView",
     'moment'
 ], function (App, formTpl, Util, MapView, ListView, Collection, NotFoundView, moment) {
     App.module("Form.View", function (View, App, Backbone, Marionette, $) {
@@ -14,69 +14,85 @@ define(["app",
             ui: {
                 link: '#website_url',
                 form: '#form_search',
-                alert: '#alert-form'
+                alert: '#alert-form',
+                whereAmI: '#where-am-i',
+                resetForm: '#reset-form'
             },
             events: {
                 'submit @ui.form': 'search',
-                'keypress @ui.link': 'startSearch'
+                'keypress @ui.link': 'startSearch',
+                'click @ui.whereAmI': 'searchMe',
+                'click @ui.resetForm': 'searchReset'
             },
+            isItMe: false,
+            isItForget: false,
             onShow: function () {
                 this.ui.alert.hide();
             },
             startSearch: function () {
                 this.ui.alert.hide();
             },
+            searchMe: function () {
+                this.isItMe = true;
+                this.search();
+            },
             search: function (e) {
-                e.preventDefault();
+                if (e)
+                    e.preventDefault();
 
+                var self = this;
                 var link_val = this.ui.link.val();
+                var url = 'http://ip-api.com/json/' + link_val;
 
-                /*
-                 * Validating the URL and showing or not the alert in form
-                 * */
-                if (!Util.ValidURL(link_val)) {
-                    this.ui.alert.show();
-                    return false;
+                if (this.isItMe) {
+                    url = 'http://ip-api.com/json/';
+                } else {
+                    /*
+                     * Validating the URL and showing or not the alert in form
+                     * */
+                    if (!Util.ValidURL(link_val) || link_val == '') {
+                        this.ui.alert.show();
+                        return false;
+                    }
                 }
 
+
                 $.ajax({
-                    url: 'http://ip-api.com/json/' + link_val,
+                    url: url,
                     type: 'GET',
                     dataType: 'json',
                     success: function (response) {
-
-                        if(response.status == 'success') {
+                        if (response.status == 'success') {
                             /*
                              * Saving some data in localStorage
                              * */
                             var obj = {
                                 st_name: link_val,
+                                org: response.org,
                                 dt_search: moment().format('DD/MM/YYYY, H:MM:SS'),
+                                city: response.city,
+                                country: response.country,
                                 lat: response.lat,
-                                lng: response.lon
+                                lon: response.lon
                             };
 
-                            /*
-                            * Verifying if the obj in localstorage is already created
-                            * */
-                            if (localStorage.getItem('lastest_search') == null) {
-                                // If not, we'll create a new one
-                                localStorage.setItem('lastest_search', JSON.stringify([obj]));
-                            } else {
-                                //If Yes, we'll populate with more information
-                                var arrayPush = JSON.parse(localStorage.getItem('lastest_search'));
-                                arrayPush.push(obj);
-                                localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
+                            // Only occurs in default search
+                            if (!self.isItMe) {
+                                /*
+                                 * Verifying if the obj in localstorage is already created
+                                 * */
+                                if (localStorage.getItem('lastest_search') == null) {
+                                    // If not, we'll create a new one
+                                    localStorage.setItem('lastest_search', JSON.stringify([obj]));
+                                } else {
+                                    //If Yes, we'll populate with more information
+                                    var arrayPush = JSON.parse(localStorage.getItem('lastest_search'));
+                                    arrayPush.push(obj);
+                                    localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
+                                }
                             }
 
-                            //New instance of MapView, for render after a successfull response
-                            var newMap = new MapView.MapItem();
-                            newMap.onShow = function () {
-                                this.loadMap(response);
-                            };
-
-                            //Show the View in the region
-                            App.body.show(newMap);
+                            self.loadNewMap(response, false);
 
                             //New instance of ListView to update the collection and view
                             var lastestSearch = new ListView.Composite();
@@ -89,8 +105,28 @@ define(["app",
                     },
                     error: function (response) {
                         console.log(response);
+                    },
+                    complete: function () {
+                        self.isItMe = false;
                     }
                 });
+            },
+            searchReset: function () {
+                this.loadNewMap(false, true)
+            },
+            loadNewMap: function (response, reset) {
+                var self = this;
+                //New instance of MapView, for render after a successfull response
+                var newMap = new MapView.MapItem();
+                newMap.onShow = function () {
+                    if (reset)
+                        this.loadUniqueMap();
+                    else
+                        this.loadMap(response, self.isItMe);
+                };
+
+                //Show the View in the region
+                App.body.show(newMap);
             }
         });
     });

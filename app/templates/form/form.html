@@ -8,7 +8,15 @@
 
 <form id="form_search">
     <div class="form-group">
-        <input type="text" class="form-control" id="website_url" placeholder="Ex. www.google.com || g1.com"/>
+        <input type="text" required class="form-control" id="website_url" placeholder="Ex. www.google.com || g1.com"/>
     </div>
-    <button type="submit" class="btn btn btn-lg btn-block btn-raised btn-info">Find!</button>
+    <button type="submit" class="btn btn btn-lg btn-block btn-raised btn-success">Search</button>
+    <div class="btn-group btn-group-justified btn-group-raised">
+        <a href="javascript:void(0)" class="btn btn-default btn-raised" id="reset-form">Forget me
+            <div class="ripple-container"></div>
+        </a>
+        <a href="javascript:void(0)" class="btn btn-raised btn-default" id="where-am-i">Where am I?
+            <div class="ripple-container"></div>
+        </a>
+    </div>
 </form>
