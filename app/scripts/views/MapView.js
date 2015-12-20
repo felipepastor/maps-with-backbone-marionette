@@ -1,5 +1,5 @@
 define(["app",
-    "tpl!../templates/maps/maps.html",
+    "tpl!../../templates/maps/maps.html",
     'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyByKd7nRWzHBc76mGYTup-zzX6pWQlpwH8'
 ], function (App, mapsTpl) {
     App.module("Map.View", function (View, App, Backbone, Marionette) {

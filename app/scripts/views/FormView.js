@@ -1,5 +1,5 @@
 define(["app",
-    "tpl!../templates/form/form.html",
+    "tpl!../../templates/form/form.html",
     'utils/Functions',
     'views/MapView',
     "views/ListLastestView",
