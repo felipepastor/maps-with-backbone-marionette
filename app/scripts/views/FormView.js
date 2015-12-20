@@ -1,3 +1,8 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Module to render the Form View and your functions.
+ * */
 define(["app",
     "tpl!../../templates/form/form.html",
     'utils/Functions',

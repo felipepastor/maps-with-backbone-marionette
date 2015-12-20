@@ -1,3 +1,9 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Module to render notfound view and others errors views
+ **/
+
 define(["app",
     "tpl!../../templates/not_found/notFound.html"
 ], function (App, notFountTpl) {

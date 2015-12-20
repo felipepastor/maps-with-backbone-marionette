@@ -1,3 +1,9 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Definitions of the main app, routes and initializers.
+ **/
+
 define(['marionette', 'backbone'], function (Marionette, Backbone) {
     var App = new Marionette.Application();
 

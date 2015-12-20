@@ -1,3 +1,9 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Module to define any custom function.
+ **/
+
 define(["app"], function (App) {
     App.module("Util", function (Util) {
         Util.Functions = {

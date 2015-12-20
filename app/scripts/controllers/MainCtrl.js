@@ -1,3 +1,9 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Module responsible to render the views and bootstrap the app.
+ **/
+
 define(["app",
     "views/ListLastestView",
     "views/FormView",

@@ -1,3 +1,9 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Module to render the Map View and your functions.
+ * */
+
 define(["app",
     "tpl!../../templates/maps/maps.html",
     'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyByKd7nRWzHBc76mGYTup-zzX6pWQlpwH8'

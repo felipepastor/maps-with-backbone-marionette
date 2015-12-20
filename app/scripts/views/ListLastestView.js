@@ -1,3 +1,9 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Module to render lastest views
+ **/
+
 define(["app",
     "tpl!../../templates/list/list.html",
     "tpl!../../templates/list/list_item.html",

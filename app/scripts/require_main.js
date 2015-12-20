@@ -1,3 +1,9 @@
+/**
+ * @author: Felipe Pastor
+ * @date: 20/12/2015
+ * @description: Configurations of requireJS
+ **/
+
 require.config({
     paths: {
         jquery: '../vendor/jquery/dist/jquery',
