@@ -90,6 +90,8 @@ define(["app",
                                     arrayPush.push(obj);
                                     localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
                                 }
+                            } else {
+                                localStorage.setItem('me', JSON.stringify({lat: response.lat, lon: response.lon}))
                             }
 
                             self.loadNewMap(response, false);

@@ -10,6 +10,7 @@ define(["app",
             ui: {
                 mapContainer: '#map-container'
             },
+            locations: JSON.parse(localStorage.getItem('lastest_search')),
             loadMap: function (response, isItMe) {
                 var myLatLng = {
                     lat: response.lat,
@@ -45,23 +46,24 @@ define(["app",
             },
             loadMultiplesMarks: function (map, infowindow, bounds) {
                 var self = this;
-                var locations = JSON.parse(localStorage.getItem('lastest_search'));
 
-                locations.forEach(function (obj) {
-                    var marker = new google.maps.Marker({
-                        position: {
-                            lat: obj.lat,
-                            lng: obj.lon
-                        },
-                        map: map
+                if (this.locations) {
+                    this.locations.forEach(function (obj) {
+                        var marker = new google.maps.Marker({
+                            position: {
+                                lat: obj.lat,
+                                lng: obj.lon
+                            },
+                            map: map
+                        });
+
+                        bounds.extend(marker.position);
+
+                        self.setInfoWindowMarker(marker, map, infowindow, obj, false);
                     });
 
-                    bounds.extend(marker.position);
-
-                    self.setInfoWindowMarker(marker, map, infowindow, obj, false);
-                });
-
-                map.fitBounds(bounds);
+                    map.fitBounds(bounds);
+                }
             },
             setInfoWindowMarker: function (marker, map, infowindow, obj, isItMe) {
                 google.maps.event.addListener(marker, 'click', (function (marker) {
@@ -76,9 +78,12 @@ define(["app",
             },
             loadUniqueMap: function () {
                 var mapOptions = {
-                    zoom: 8,
+                    zoom: 1,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
+
+                if (this.locations == null)
+                    mapOptions.center = {lat: 0, lng: 0};
 
                 var map = new google.maps.Map(
                     this.ui.mapContainer[0],
