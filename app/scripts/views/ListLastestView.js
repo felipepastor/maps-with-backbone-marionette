@@ -1,7 +1,7 @@
 define(["app",
-    "tpl!../../templates/list/list.html",
-    "tpl!../../templates/list/list_item.html",
-    "tpl!../../templates/list/none.html",
+    "tpl!../templates/list/list.html",
+    "tpl!../templates/list/list_item.html",
+    "tpl!../templates/list/none.html",
     "../models/MainModels"
 ], function (App, listTpl, listItemTpl, noneTpl, Models) {
     App.module("List.View", function (View, App, Backbone, Marionette) {
