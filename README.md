@@ -1,14 +1,14 @@
 # Test AvenueCode #
 
-Este projeto é dedicado ao teste solicitado pela [AvenueCode](http://avenuecode.com)
+This project is dedicated to the test requested by [AvenueCode](http://avenuecode.com)
 
-### Como faço para rodar local? ###
+### How do I run this app? ###
 
-* Git clone deste repositório
-* Instale o [Bower](http://bower.io)
-* Execute o comando "bower install"
-* Acesse a pasta /app do repositório
+* Git clone this repo
+* Install [Bower](http://bower.io)
+* Execute the command "bower install" in the repo's root folder 
+* Access the repo folder "/app"
 
-### Não quer rodar local? Tudo bem! :) ###
+### Don't want to run local? Alright! :) ###
 
-* Acesse [avenuecode.garaza.com.br/app/](http://avenuecode.garaza.com.br/app/)
+* Just access [avenuecode.garaza.com.br/app/](http://avenuecode.garaza.com.br/app/)
