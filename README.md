@@ -23,6 +23,6 @@ This project is dedicated to the test requested by [AvenueCode](http://avenuecod
 * **Material Design/Bootstrap**: Scaffolding the template and design stuffs
 * **MomentJS**: Manipulation of Date and time.
 
-### BDD/TDD ###
+### What is missing? ###
 
-* It was missing the tests and gulp tasks to automate their execution. I found it difficult to integrate the three technologies Jasmine / RequireJS / Marionette.
+* **BDD/TDD**: It was missing the tests and gulp tasks to automate their executions. I found it difficult to integrate the three technologies Jasmine/RequireJS/Marionette.
