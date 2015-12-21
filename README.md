@@ -22,4 +22,7 @@ This project is dedicated to the test requested by [AvenueCode](http://avenuecod
 * **SASS**: CSS Preprocessor
 * **Material Design/Bootstrap**: Scaffolding the template and design stuffs
 * **MomentJS**: Manipulation of Date and time.
- 
+
+### BDD/TDD ###
+
+* It was missing the tests and gulp tasks to automate their execution. I found it difficult to integrate the three technologies Jasmine / RequireJS / Marionette.
