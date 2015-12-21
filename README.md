@@ -16,7 +16,10 @@ This project is dedicated to the test requested by [AvenueCode](http://avenuecod
 ### Libraries and why i used? ###
 
 * **RequireJS**: modular, asynchronous loading, AMD and more consistency code.
-* **Backbone/Marionette**: Data binding and views management.
-* **SASS**: CSS Preprocessor
+* **Backbone/Marionette/Underscore/JQuery**: Data binding, views management and DOM manipulation.
 * **Gulp**: Automate some tasks
 * **Bower**: Manage front-end dependencies
+* **SASS**: CSS Preprocessor
+* **Material Design/Bootstrap**: Scaffolding the template and design stuffs
+* **MomentJS**: Manipulation of Date and time.
+ 
