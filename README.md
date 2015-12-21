@@ -12,3 +12,11 @@ This project is dedicated to the test requested by [AvenueCode](http://avenuecod
 ### Don't want to run local? Alright! :) ###
 
 * Just access [avenuecode.garaza.com.br/app/](http://avenuecode.garaza.com.br/app/)
+
+### Libraries and why i used? ###
+
+* **RequireJS**: modular, asynchronous loading, AMD and more consistency code.
+* **Backbone/Marionette**: Data binding and views management.
+* **SASS**: CSS Preprocessor
+* **Gulp**: Automate some tasks
+* **Bower**: Manage front-end dependencies
