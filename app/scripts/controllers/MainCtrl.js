@@ -7,21 +7,19 @@
 define(["app",
     "views/ListLastestView",
     "views/FormView",
-    "collections/MainCollections"], function (App, ListView, FormView, Collection) {
+    "collections/MainCollections"], function (App, ListView, FormView) {
     App.module("Main", function (Main, App) {
         Main.Controller = {
             mainActionView: function () {
-                /*
-                * Instance of collectionList for later usage
-                * */
-                var compositeList = new ListView.Composite();
-                compositeList.collection = Collection.collectionList();
 
                 /*
                 * Show the lastest search region with CompositeView
                 * */
-                App.lastest.show(compositeList);
+                App.lastest.show(new ListView.Composite());
 
+                /*
+                 * Show the FormItemView
+                 * */
                 App.search.show(new FormView.FormItem());
             }
         };

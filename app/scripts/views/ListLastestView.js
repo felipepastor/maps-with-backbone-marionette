@@ -8,8 +8,9 @@ define(["app",
     "tpl!../../templates/list/list.html",
     "tpl!../../templates/list/list_item.html",
     "tpl!../../templates/list/none.html",
-    "../models/MainModels"
-], function (App, listTpl, listItemTpl, noneTpl, Models) {
+    "../models/MainModels",
+    "../collections/MainCollections"
+], function (App, listTpl, listItemTpl, noneTpl, Models, Collection) {
     App.module("List.View", function (View, App, Backbone, Marionette) {
         View.ListItem = Marionette.ItemView.extend({
             template: listItemTpl,
@@ -36,7 +37,8 @@ define(["app",
             tagName: 'div',
             childView: View.ListItem,
             emptyView: View.NoItem,
-            childViewContainer: "tbody"
+            childViewContainer: "tbody",
+            collection: new Collection.collectionList()
         });
     });
 

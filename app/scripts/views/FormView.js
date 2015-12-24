@@ -101,10 +101,8 @@ define(["app",
 
                             self.loadNewMap(response, false);
 
-                            //New instance of ListView to update the collection and view
-                            var lastestSearch = new ListView.Composite();
-                            lastestSearch.collection = Collection.collectionList();
-                            App.lastest.show(lastestSearch);
+                            var composite = new ListView.Composite();
+                            composite.collection.add(obj);
                         } else {
                             //Show the View of NotFound in the body region
                             App.body.show(new NotFoundView.NotFoundItem());
