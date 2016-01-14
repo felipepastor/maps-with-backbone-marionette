@@ -68,6 +68,7 @@ define(["app",
                     dataType: 'json',
                     success: function (response) {
                         if (response.status == 'success') {
+
                             /*
                              * Saving some data in localStorage
                              * */

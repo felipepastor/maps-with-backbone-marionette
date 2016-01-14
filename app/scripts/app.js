@@ -4,7 +4,12 @@
  * @description: Definitions of the main app, routes and initializers.
  **/
 
-define(['marionette', 'backbone'], function (Marionette, Backbone) {
+define(['marionette', 'backbone', 'material'], function (Marionette, Backbone) {
+    $(document).ready( function() {
+        $.material.init();
+        $.material.ripples();
+    });
+
     var App = new Marionette.Application();
 
     App.addRegions({
@@ -27,7 +32,7 @@ define(['marionette', 'backbone'], function (Marionette, Backbone) {
         }
     });
 
-    App.addInitializer(function (options) {
+    App.addInitializer(function () {
         // initialize the router
         new appRouter({
             controller: RouterController
