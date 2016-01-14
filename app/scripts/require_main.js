@@ -18,7 +18,10 @@ require.config({
         text: "../vendor/require.text/require.text",
         tpl: "../vendor/underscore_tpl/underscore.tpl",
         async: '../vendor/requirejs-plugins/src/async',
-        moment: '../vendor/moment/min/moment.min'
+        moment: '../vendor/moment/min/moment.min',
+        jasmine: '../vendor/jasmine-core/lib/jasmine-core/jasmine',
+        'jasmine-html': '../vendor/jasmine-core/lib/jasmine-core/jasmine-html',
+        'jasmine-boot': '../vendor/jasmine-core/lib/jasmine-core/boot'
     },
     shim: {
         'bootstrap': {
@@ -40,6 +43,12 @@ require.config({
         marionette: {
             deps: ['backbone'],
             exports: 'Marionette'
+        },
+        'jasmine-html': {
+            deps: ['jasmine']
+        },
+        'jasmine-boot': {
+            deps: ['jasmine', 'jasmine-html']
         }
     }
 });
