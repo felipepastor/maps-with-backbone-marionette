@@ -24,14 +24,14 @@ require.config({
         'jasmine-boot': '../vendor/jasmine-core/lib/jasmine-core/boot'
     },
     shim: {
-        'bootstrap': {
+        bootstrap: {
             deps: ['jquery']
         },
         ripples: {
             deps: ['jquery']
         },
-        'material': {
-            'deps': ['ripples', 'bootstrap']
+        material: {
+            deps: ['ripples', 'bootstrap']
         },
         underscore: {
             exports: '_'
@@ -51,12 +51,4 @@ require.config({
             deps: ['jasmine', 'jasmine-html']
         }
     }
-});
-
-require(['app', 'material', 'controllers/MainCtrl', 'moment'], function (App, material, mainCtrl, moment) {
-    //initialize material design
-    $.material.init();
-    $.material.ripples();
-
-    App.start();
 });
