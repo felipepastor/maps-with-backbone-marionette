@@ -38,7 +38,7 @@ define(["app",
             childView: View.ListItem,
             emptyView: View.NoItem,
             childViewContainer: "tbody",
-            collection: new Collection.collectionList()
+            collection: Collection.collectionList()
         });
     });
 

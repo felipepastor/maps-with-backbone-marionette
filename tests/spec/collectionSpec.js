@@ -1,7 +1,6 @@
 define([
     "jquery",
-    "marionette",
-    "../../app/scripts/collections/MainCollections"], function ($, Marionette, Collection) {
+    "collections/MainCollections"], function ($, Collection) {
     describe("collection tests", function () {
 
         var obj = {
@@ -17,7 +16,7 @@ define([
 
         beforeEach(function () {
             //reseting the collection
-            collection = new Collection.collectionList();
+            collection = Collection.collectionList();
             collection.reset();
         });
 

@@ -22,7 +22,8 @@ require.config({
         moment: '../vendor/moment/min/moment.min',
         jasmine: '../vendor/jasmine-core/lib/jasmine-core/jasmine',
         'jasmine-html': '../vendor/jasmine-core/lib/jasmine-core/jasmine-html',
-        'jasmine-boot': '../vendor/jasmine-core/lib/jasmine-core/boot'
+        'jasmine-boot': '../vendor/jasmine-core/lib/jasmine-core/boot',
+        'jasmine-ajax': '../vendor/jasmine-ajax/lib/mock-ajax'
     },
     shim: {
         bootstrap: {
@@ -45,11 +46,18 @@ require.config({
             deps: ['backbone'],
             exports: 'Marionette'
         },
+        jasmine: {
+            exports: 'jasmine'
+        },
         'jasmine-html': {
             deps: ['jasmine']
         },
         'jasmine-boot': {
             deps: ['jasmine', 'jasmine-html']
+        },
+        'jasmine-ajax': {
+            deps: ["jasmine-boot"],
+            exports: "jasmine"
         }
     }
 });
