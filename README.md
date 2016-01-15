@@ -9,6 +9,11 @@ This project is dedicated to the test requested by [AvenueCode](http://avenuecod
 * Execute the command "bower install" in the repo's root folder 
 * Access the repo folder "/app"
 
+### How do I run **tests (TDD/BDD)**? ###
+
+* Access the repo folder "/tests"
+* Jasmine and RequireJS should work correctly 
+
 ### Don't want to run local? Alright! :) ###
 
 * Just access [avenuecode.garaza.com.br/app/](http://avenuecode.garaza.com.br/app/)
@@ -22,7 +27,3 @@ This project is dedicated to the test requested by [AvenueCode](http://avenuecod
 * **SASS**: CSS Preprocessor
 * **Material Design/Bootstrap**: Scaffolding the template and design stuffs
 * **MomentJS**: Manipulation of Date and time.
-
-### What is missing? ###
-
-* **BDD/TDD**: It was missing the tests and gulp tasks to automate their executions. I found it difficult to integrate the three technologies Jasmine/RequireJS/Marionette.
