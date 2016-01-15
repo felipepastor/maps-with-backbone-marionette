@@ -31,6 +31,8 @@ define(["app",
             },
             isItMe: false,
             isItForget: false,
+            url: '',
+            BaseUrl: 'http://ip-api.com/json/',
             onShow: function () {
                 this.ui.alert.hide();
             },
@@ -46,12 +48,10 @@ define(["app",
                     e.preventDefault();
 
                 var self = this;
-                var link_val = this.ui.link.val();
-                var url = 'http://ip-api.com/json/' + link_val;
+                var link_val = '';
+                if (!this.isItMe) {
+                    link_val = this.ui.link.val();
 
-                if (this.isItMe) {
-                    url = 'http://ip-api.com/json/';
-                } else {
                     /*
                      * Validating the URL and showing or not the alert in form
                      * */
@@ -61,9 +61,10 @@ define(["app",
                     }
                 }
 
-                //Form Request to the inputbox
+                this.url = this.BaseUrl + link_val;
+
                 $.ajax({
-                    url: url,
+                    url: this.url,
                     type: 'GET',
                     dataType: 'json',
                     success: function (response) {
@@ -75,7 +76,7 @@ define(["app",
                             var obj = {
                                 st_name: link_val,
                                 org: response.org,
-                                dt_search: moment().format('DD/MM/YYYY, H:MM:SS'),
+                                dt_search: moment().format('DD/MM/YYYY, H:m:s'),
                                 city: response.city,
                                 country: response.country,
                                 lat: response.lat,
@@ -96,14 +97,15 @@ define(["app",
                                     arrayPush.push(obj);
                                     localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
                                 }
+
+                                var composite = new ListView.Composite();
+                                composite.collection.add(obj);
+
                             } else {
                                 localStorage.setItem('me', JSON.stringify({lat: response.lat, lon: response.lon}))
                             }
 
                             self.loadNewMap(response, false);
-
-                            var composite = new ListView.Composite();
-                            composite.collection.add(obj);
                         } else {
                             //Show the View of NotFound in the body region
                             App.body.show(new NotFoundView.NotFoundItem());

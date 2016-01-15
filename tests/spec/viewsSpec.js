@@ -71,13 +71,14 @@ define(definition, function ($, App, ListLastestView, FormView, MapView, Collect
 
         it("is map view object render as expected?", function () {
             map = new MapView.MapItem();
+            map.render();
 
             map.onShow = function () {
                 console.log(this.loadMap({lat: 0, lon: 0}, false));
             };
 
-            //var rendered = map.render();
-            //console.log(map);
+            var rendered = $(map.el).html();
+            expect(rendered).not.toBe("");
         });
     });
 });
