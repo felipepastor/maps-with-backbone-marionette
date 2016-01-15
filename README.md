@@ -11,8 +11,9 @@ This project is dedicated to the test requested by [AvenueCode](http://avenuecod
 
 ### How do I run **tests (TDD/BDD)**? ###
 
+* Clear the browser cache
 * Access the repo folder "/tests"
-* Jasmine and RequireJS should work correctly 
+* Jasmine and RequireJS should work correctly
 
 ### Don't want to run local? Alright! :) ###
 
