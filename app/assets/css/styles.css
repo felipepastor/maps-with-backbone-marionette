@@ -18,3 +18,7 @@ html, body, .clear-height {
 #map-container {
   height: 100%;
   width: 100%; }
+
+#lastest-search-region {
+  overflow: auto;
+  max-height: 390px; }
