@@ -88,14 +88,24 @@ define(["app",
                                 /*
                                  * Verifying if the obj in localstorage is already created
                                  * */
-                                if (localStorage.getItem('lastest_search') == null) {
+                                if (!localStorage.getItem('lastest_search')) {
                                     // If not, we'll create a new one
                                     localStorage.setItem('lastest_search', JSON.stringify([obj]));
                                 } else {
                                     //If Yes, we'll populate with more information
+                                    var isEqual = false;
                                     var arrayPush = JSON.parse(localStorage.getItem('lastest_search'));
-                                    arrayPush.push(obj);
-                                    localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
+
+                                    for (var objArray in arrayPush) {
+                                        if (arrayPush[objArray].lat == obj.lat && arrayPush[objArray].lon == obj.lon) {
+                                            isEqual = true;
+                                        }
+                                    }
+
+                                    if(!isEqual){
+                                        arrayPush.push(obj);
+                                        localStorage.setItem('lastest_search', JSON.stringify(arrayPush));
+                                    }
                                 }
 
                                 var composite = new ListView.Composite();
@@ -132,6 +142,8 @@ define(["app",
                     else
                         this.loadMap(response, self.isItMe);
                 };
+
+                //newMap.render();
 
                 //Show the View in the region
                 App.body.show(newMap);
