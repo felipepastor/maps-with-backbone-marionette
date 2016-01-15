@@ -12,13 +12,13 @@ define(["jquery", "marionette", "views/FormView"], function ($, Marionette, Form
             elementsObj = $(elementsStr);
 
             form = new FormView.FormItem();
+
+            form.ui.link = elementsObj.find('#link');
+            form.ui.alert = elementsObj.find('#alert-form');
         });
 
         it("is the url for search ok?", function () {
             //var expectedData = {};
-
-            form.ui.link = elementsObj.find('#link');
-            form.ui.alert = elementsObj.find('#alert-form');
 
             form.search();
 
