@@ -1,7 +1,3 @@
-# Test AvenueCode #
-
-This project is dedicated to the test requested by [AvenueCode](http://avenuecode.com)
-
 ### How do I run this app? ###
 
 * Git clone this repo
